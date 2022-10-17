@@ -15,3 +15,43 @@ Ad esempio:
 Di cosa ho bisogno per generare i numeri?
 Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dati giusti.
 Le validazioni e i controlli possiamo farli anche in un secondo momento. */
+
+// ESECUZIONE
+const arrayNumber = [];
+const numberGrid = 100;
+let i = 0;
+
+
+while (i < numberGrid) {
+    arrayNumber.push(i + 1);
+    i++
+}
+
+const row = document.querySelector(".row");
+for (let i = 0; i < arrayNumber.length; i++) {
+  const thisNumber = arrayNumber[i];
+  console.log(thisNumber);
+  // Creo un elemnto square
+  const thisSquare = createSquare(thisNumber);
+  // aggiungo eventListener allo square creato
+  thisSquare.addEventListener("click", function(){
+    
+  });
+
+  // inserisco l'elemento nel DOM
+  row.append(thisSquare);
+}
+
+console.log(arrayNumber);
+
+/**
+ * Description: La funzione che crea l'elemento square da inserire nel dom
+ * @param {number} innerNumber -> numero da inserire all'interno del square
+ * @returns {object} elemento DOM che rappresenta lo square
+ */
+ function createSquare(innerNumber) {
+    const newSquare = document.createElement("div");
+    newSquare.classList.add("square-easy");
+    newSquare.innerHTML = innerNumber;
+    return newSquare;
+  }
