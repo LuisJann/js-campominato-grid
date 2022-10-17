@@ -18,21 +18,29 @@ Le validazioni e i controlli possiamo farli anche in un secondo momento. */
 
 // ESECUZIONE
 const arrayNumber = [];
-let numberGrid = 100;
+const numberGrid = 100;
 const playBtn = document.getElementById("play-btn");
 console.log(playBtn);
+const level = document.getElementById("selector")
+const option = document.getElementsByClassName("option");
+console.log(level);
 let i = 0;
+let clean = false;
+
+
 
 playBtn.addEventListener("click", function(){
+
     while (i < numberGrid) {
         arrayNumber.push(i + 1);
         i++
     }
     console.log(arrayNumber);
-    const row = document.querySelector(".row");
-    for (let i = 0; i < arrayNumber.length; i++) {
+    let row = document.querySelector(".row");
+    row.innerHTML="";
+    for (i = 0; i < arrayNumber.length; i++) {
       const thisNumber = arrayNumber[i];
-    
+      
       // Creo un elemnto square
       const thisSquare = createSquare(thisNumber);
       // aggiungo eventListener allo square creato e aggiungo classe "bg-color-blu"
@@ -40,7 +48,7 @@ playBtn.addEventListener("click", function(){
         this.classList.toggle("bg-color-blu");
         console.log(thisNumber);
       });
-    
+      
       // inserisco l'elemento nel DOM
       row.append(thisSquare);
     }
@@ -54,10 +62,9 @@ playBtn.addEventListener("click", function(){
  * @returns {object} elemento DOM che rappresenta lo square
  */
  function createSquare(innerNumber) {
-    const newSquare = document.createElement("div");
+     const newSquare = document.createElement("div")
     newSquare.classList.add("square-easy");
     newSquare.innerHTML = innerNumber;
     return newSquare;
   }
-
   
