@@ -18,32 +18,35 @@ Le validazioni e i controlli possiamo farli anche in un secondo momento. */
 
 // ESECUZIONE
 const arrayNumber = [];
-const numberGrid = 100;
+let numberGrid = 100;
+const playBtn = document.getElementById("play-btn");
+console.log(playBtn);
 let i = 0;
 
+playBtn.addEventListener("click", function(){
+    while (i < numberGrid) {
+        arrayNumber.push(i + 1);
+        i++
+    }
+    console.log(arrayNumber);
+    const row = document.querySelector(".row");
+    for (let i = 0; i < arrayNumber.length; i++) {
+      const thisNumber = arrayNumber[i];
+    
+      // Creo un elemnto square
+      const thisSquare = createSquare(thisNumber);
+      // aggiungo eventListener allo square creato e aggiungo classe "bg-color-blu"
+      thisSquare.addEventListener("click", function(){
+        this.classList.toggle("bg-color-blu");
+        console.log(thisNumber);
+      });
+    
+      // inserisco l'elemento nel DOM
+      row.append(thisSquare);
+    }
+})
 
-while (i < numberGrid) {
-    arrayNumber.push(i + 1);
-    i++
-}
 
-const row = document.querySelector(".row");
-for (let i = 0; i < arrayNumber.length; i++) {
-  const thisNumber = arrayNumber[i];
-
-  // Creo un elemnto square
-  const thisSquare = createSquare(thisNumber);
-  // aggiungo eventListener allo square creato e aggiungo classe "bg-color-blu"
-  thisSquare.addEventListener("click", function(){
-    this.classList.toggle("bg-color-blu");
-    console.log(thisNumber);
-  });
-
-  // inserisco l'elemento nel DOM
-  row.append(thisSquare);
-}
-
-console.log(arrayNumber);
 
 /**
  * Description: La funzione che crea l'elemento square da inserire nel dom
