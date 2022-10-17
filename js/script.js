@@ -30,12 +30,13 @@ while (i < numberGrid) {
 const row = document.querySelector(".row");
 for (let i = 0; i < arrayNumber.length; i++) {
   const thisNumber = arrayNumber[i];
-  console.log(thisNumber);
+
   // Creo un elemnto square
   const thisSquare = createSquare(thisNumber);
-  // aggiungo eventListener allo square creato
+  // aggiungo eventListener allo square creato e aggiungo classe "bg-color-blu"
   thisSquare.addEventListener("click", function(){
-    
+    this.classList.toggle("bg-color-blu");
+    console.log(thisNumber);
   });
 
   // inserisco l'elemento nel DOM
@@ -55,3 +56,5 @@ console.log(arrayNumber);
     newSquare.innerHTML = innerNumber;
     return newSquare;
   }
+
+  
